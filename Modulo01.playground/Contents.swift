@@ -1,23 +1,23 @@
 import UIKit
 
 let totalSeconds = 100000
-let minDivisor = 60
-let hourDivisor = 60
-let dayDivisor = 24
+let secPerMin = 60
+let minPerHour = 60
+let hourPerDay = 24
 
-func pluralize(value:Int, increment:String) -> String {    
-    return value > 1 ? increment + "s" : increment
+func pluralize(value:Int, unit:String) -> String {
+    return value > 1 ? unit + "s" : unit
 }
 
-func getMinutes(seconds:Int) -> (Int, Int, Int, Int) {
-    let sec = seconds %  minDivisor
-    let min = (seconds / minDivisor) % hourDivisor
-    let hr = ((seconds / minDivisor) / hourDivisor) % dayDivisor
-    let days = ((seconds / minDivisor) / hourDivisor) / dayDivisor
+func getSmallerUnits(seconds:Int) -> (Int, Int, Int, Int) {
+    let s = seconds %  secPerMin
+    let m = (seconds / secPerMin) % minPerHour
+    let h = ((seconds / secPerMin) / minPerHour) % hourPerDay
+    let d = ((seconds / secPerMin) / minPerHour) / hourPerDay
 
-    return (days, hr, min, sec)
+    return (d, h, m, s)
 }
 
-let (day, hour, minute, second) = getMinutes(seconds: totalSeconds)
+let (d, h, m, s) = getSmallerUnits(seconds: totalSeconds)
 
-print("\(day) \(pluralize(value: day, increment: "day")), \(hour) \(pluralize(value: hour, increment: "hour")), \(minute) \(pluralize(value: minute, increment: "minute")), \(second) \(pluralize(value: second, increment: "second"))")
+print("\(d) \(pluralize(value: d, unit: "day")), \(h) \(pluralize(value: h, unit: "hour")), \(m) \(pluralize(value: m, unit: "minute")), \(s) \(pluralize(value: s, unit: "second"))")
