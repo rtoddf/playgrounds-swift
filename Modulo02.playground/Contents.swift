@@ -1,6 +1,6 @@
 import UIKit
 
-let totalSeconds = 1000000
+let totalSeconds = 100000
 let secPerMin = 60
 let minPerHour = 60
 let hourPerDay = 24
@@ -10,11 +10,12 @@ func pluralize(value:Int, unit:String) -> String {
 }
 
 func getSmallerUnits(seconds:Int) -> (Int, Int, Int, Int) {
-    let s = seconds %  secPerMin
-    let m = (seconds / secPerMin) % minPerHour
-    let h = ((seconds / secPerMin) / minPerHour) % hourPerDay
-    let d = ((seconds / secPerMin) / minPerHour) / hourPerDay
 
+    let s = seconds % secPerMin
+    let m = ((seconds - s) / secPerMin) % minPerHour
+    let h = (((((seconds - s) / secPerMin) - m) / minPerHour) % hourPerDay)
+    let d = ((((((seconds - s) / secPerMin) - m) / minPerHour) - h) / hourPerDay)
+    
     return (d, h, m, s)
 }
 
