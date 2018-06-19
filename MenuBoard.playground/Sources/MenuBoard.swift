@@ -35,7 +35,7 @@ public class MenuBoard:UIViewController {
     //        return view
     //    }()
     
-    var headingText = "Huli Pizza Company \n"
+    var headingText = "Huli Pizza Company \n\n"
     //    var menuText = ""
     
     func addViews() {

@@ -1,5 +1,5 @@
 //:# Menu Board
-//: A menu to print to the live view
+//: A menu of pizzas to print to the live view
 
 import UIKit
 import PlaygroundSupport
@@ -18,4 +18,5 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 
 menuBoard.printHeading("Aloha Pizza")
 menuBoard.printHeading("Our Pizzas Today")
+
 menuBoard.printMenu()
