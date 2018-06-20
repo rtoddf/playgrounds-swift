@@ -4,6 +4,18 @@
 import UIKit
 import PlaygroundSupport
 
+//:## Introduction
+//: **Menuboard** is part one of this proposal for the *Huli Pizza Company* Menu System. The menuboard is a static page which the restaurant uses on displays to show menu items to customers in-store.
+
+/*:
+ ### Features
+ **Menuboard** is full of features:
++ an image of a pizza
++ an adaptable layout that size to the display
++ easily changeable prices and menu items
++ fun, warm font that has a chalkboard feel
+ */
+
 // set a var for the main VC
 let menuBoard = MenuBoard()
 
@@ -20,3 +32,8 @@ menuBoard.printHeading("Aloha Pizza")
 menuBoard.printHeading("Our Pizzas Today")
 
 menuBoard.printMenu()
+
+//: [Desserts Menu](@next)
+//:
+//:[cnn.com]:http://www.cnn.com
+//: News at [cnn.com] (c)2017
