@@ -24,8 +24,8 @@ class GameViewController: UIViewController {
     }
     
     func setupView() {
-        sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: view.frame.width / 2, height: view.frame.height / 2))
-        sceneView.frame = view.frame
+        sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: 400, height: 400))
+//        sceneView.frame = view.frame
         scene = SCNScene()
         sceneView.scene = scene
         scene.background.contents = UIColor(hexString: "#333")
