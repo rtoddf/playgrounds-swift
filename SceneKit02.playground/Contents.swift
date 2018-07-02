@@ -4,8 +4,6 @@ import PlaygroundSupport
 
 // create a scene ciew with an empty scene
 let screensize:CGRect = UIScreen.main.bounds
-let screenHeight = screensize.height
-let newCameraYPosition = Float(screenHeight) * 0.01
 
 var sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: screensize.width, height: screensize.height))
 var scene = SCNScene()
