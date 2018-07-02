@@ -3,7 +3,11 @@ import SceneKit
 import PlaygroundSupport
 
 // create a scene ciew with an empty scene
-var sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+let screensize:CGRect = UIScreen.main.bounds
+let screenHeight = screensize.height
+let newCameraYPosition = Float(screenHeight) * 0.01
+
+var sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: screensize.width, height: screensize.height))
 var scene = SCNScene()
 sceneView.scene = scene
 scene.background.contents = UIColor(hexString: "#fff")
@@ -22,7 +26,7 @@ scene.rootNode.addChildNode(cameraNode)
 // a geometry object
 //SCNTorus(ringRadius: 1, pipeRadius: 0.35)
 // SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
-var shape = SCNTorus(ringRadius: 2, pipeRadius: 0.35)
+var shape = SCNTorus(ringRadius: 1, pipeRadius: 0.35)
 var shapeNode = SCNNode(geometry: shape)
 scene.rootNode.addChildNode(shapeNode)
 
