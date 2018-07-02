@@ -2,20 +2,15 @@ import UIKit
 import SceneKit
 import PlaygroundSupport
 
-var scnView:SCNView!
-var scnScene:SCNScene!
-var cameraNode:SCNNode!
+var sceneView:SCNView!
+var scene:SCNScene!
 
 class GameViewController: UIViewController {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor(white: 0.3, alpha: 1.0)
-        
+
         setupView()
-        setupScene()
         setupCamera()
         spawnShape()
     }
@@ -29,21 +24,23 @@ class GameViewController: UIViewController {
     }
     
     func setupView() {
-        scnView = self.view as! SCNView
-        scnView.allowsCameraControl = true
-        scnView.autoenablesDefaultLighting = true
-    }
-    
-    func setupScene() {
-        scnScene = SCNScene()
-        scnView.scene = scnScene
+        sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: view.frame.width / 2, height: view.frame.height / 2))
+        sceneView.frame = view.frame
+        scene = SCNScene()
+        sceneView.scene = scene
+        scene.background.contents = UIColor(hexString: "#333")
+        sceneView.allowsCameraControl = true
+        sceneView.autoenablesDefaultLighting = true
+        
+        self.view.addSubview(sceneView)
     }
     
     func setupCamera() {
-        cameraNode = SCNNode()
+        // a camera
+        var cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
-        scnScene.rootNode.addChildNode(cameraNode)
+        cameraNode.position = SCNVector3(0, 0, 3)
+        scene.rootNode.addChildNode(cameraNode)
     }
     
     func spawnShape() {
@@ -67,7 +64,7 @@ class GameViewController: UIViewController {
             geometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
         }
         let geometryNode = SCNNode(geometry: geometry)
-        scnScene.rootNode.addChildNode(geometryNode)
+        scene.rootNode.addChildNode(geometryNode)
     }
 }
 
@@ -90,6 +87,5 @@ enum ShapeType:Int {
 
 let gameViewController = GameViewController()
 let navigationController = UINavigationController(rootViewController: gameViewController)
-//sceneViewController.navigationController?.isNavigationBarHidden = true
-//PlaygroundPage.current.liveView = navigationController
-PlaygroundPage.current.liveView = gameViewController
+gameViewController.navigationController?.isNavigationBarHidden = true
+PlaygroundPage.current.liveView = navigationController
