@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         cameraNode.light = ambientLight
         
         let cubeGeometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
-        cubeGeometry.materials = [createMaterial(color: "#003264")]
+        cubeGeometry.materials = [createMaterial(color: "#6699cc")]
         let cubeNode = SCNNode(geometry: cubeGeometry)
         
         let constraint = SCNLookAtConstraint(target: cubeNode)
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         spotLightNode.constraints = [constraint]
         
         let planeGeometry = SCNPlane(width: 50.0, height: 50.0)
-        planeGeometry.materials = [createMaterial(color: "#6107ad")]
+        planeGeometry.materials = [createMaterial(color: "#003264")]
         let planeNode = SCNNode(geometry: planeGeometry)
         planeNode.eulerAngles = SCNVector3(x: GLKMathDegreesToRadians(-90), y: 0, z: 0)
         planeNode.position = SCNVector3(x: 0, y: -0.5, z: 0)
