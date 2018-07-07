@@ -39,7 +39,7 @@ class GameViewController: UIViewController {
         // a camera
         var cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(0, 0, 3)
+        cameraNode.position = SCNVector3(0, 0, 8)
         scene.rootNode.addChildNode(cameraNode)
     }
     
@@ -64,6 +64,7 @@ class GameViewController: UIViewController {
             geometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
         }
         let geometryNode = SCNNode(geometry: geometry)
+        geometryNode.position = SCNVector3(-2.0, 2.0, 0)
         scene.rootNode.addChildNode(geometryNode)
     }
 }
